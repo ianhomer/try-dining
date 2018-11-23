@@ -1,0 +1,2 @@
+# try-dining
+Dining philosophers
