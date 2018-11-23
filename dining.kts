@@ -1,6 +1,6 @@
 class Philospher(val index: Int, val left: Any, val right: Any) {
     var count = 0
-    var diner = Thread {
+    val diner = Thread {
         while(true) {
             println("$index think : $count")
             synchronized(left) {
