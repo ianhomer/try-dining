@@ -17,6 +17,7 @@ class Waiter:
         self.name = name
         self.forks = forks
 
+
     def canEat(self, fork1, fork2):
         return fork1.acquire(False) and fork2.acquire(False)
 
