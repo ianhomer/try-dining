@@ -15,13 +15,14 @@ forks = [Lock(), Lock(), Lock(), Lock(), Lock()]
 class Philosopher:
     def __init__(self, name, fork1, fork2):
         self.name = name
+        self.count = 0
         self.fork1 = fork1
         self.fork2 = fork2
 
     def eat(self):
         #time.sleep(random.random()/100)
 
-        print self.name + " trying to eat"
+        print self.name + " trying to eat(" + str(self.count) + ")"
         self.fork1.acquire()
         #time.sleep(random.random()/1000)
 
@@ -32,6 +33,7 @@ class Philosopher:
             time.sleep(random.random()/100)
             return
         print self.name + " eating"
+        self.count +=1
         #time.sleep(random.random()/100)
         self.fork1.release()
         #time.sleep(random.random()/1000)
@@ -42,10 +44,10 @@ class Philosopher:
 
 philosophers = [
     Philosopher("A", forks[0], forks[1]),
-    Philosopher("B", forks[1], forks[2]),
-    Philosopher("C", forks[2], forks[3]),
-    Philosopher("D", forks[3], forks[4]),
-    Philosopher("E", forks[4], forks[0]),
+    Philosopher("   B", forks[1], forks[2]),
+    Philosopher("      C", forks[2], forks[3]),
+    Philosopher("          D", forks[3], forks[4]),
+    Philosopher("               E", forks[4], forks[0]),
 ]
 
 # Create two threads as follows
