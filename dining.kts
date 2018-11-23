@@ -10,6 +10,9 @@ class Philospher(val index: Int, val left: Any, val right: Any) {
             }
         }
     })
+    fun isEating() : Boolean {
+        return eat.isAlive()
+    }
 }
 
 val size = 4
@@ -22,24 +25,17 @@ val philosphers = listOf(
 )
 
 println("Start ...")
+
 for (philospher in philosphers) {
     philospher.eat.start()
 }
 println("... all eating")
-var finished = false
-while (!finished) {
+var eating = true
+while (eating) {
     Thread.sleep(1_000)
-    var count = size
-    philosphers
-    for (philospher in philosphers) {
-        if (!philospher.eat.isAlive()) {
-            count++
-        }
-    }
-    finished = (count == 0)
-    if (!finished) {
-        println("... ${count} count still eating")
-    }
+    var count = philosphers.count({it -> it.isEating()})
+    eating = count != 0
+    if (eating) println("... ${count} count still eating")
 }
 println("... end")
 
