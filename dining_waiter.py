@@ -18,9 +18,9 @@ class Waiter:
             self.forks = forks
 
         def canEat(self, fork1, fork2):
-            return fork1.acquire() and fork2.acquire()
+            return fork1.acquire(False) and fork2.acquire(False)
 
-        def release(fork1, fork2):
+        def release(self, fork1, fork2):
             fork1.release()
             fork2.release()
 
