@@ -13,16 +13,17 @@ def philosopher_eat( philosopher ):
 forks = [Lock(), Lock(), Lock(), Lock(), Lock()]
 
 class Waiter:
-        def __init__(self, name, forks):
-            self.name = name
-            self.forks = forks
+    def __init__(self, name, forks):
+        self.name = name
+        self.forks = forks
 
-        def canEat(self, fork1, fork2):
-            return fork1.acquire(False) and fork2.acquire(False)
 
-        def release(self, fork1, fork2):
-            fork1.release()
-            fork2.release()
+    def canEat(self, fork1, fork2):
+        return fork1.acquire(False) and fork2.acquire(False)
+
+    def release(self, fork1, fork2):
+        fork1.release()
+        fork2.release()
 
 class Philosopher:
     def __init__(self, name, waiter, fork1, fork2):
