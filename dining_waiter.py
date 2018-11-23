@@ -27,6 +27,7 @@ class Waiter:
 class Philosopher:
     def __init__(self, name, waiter, fork1, fork2):
         self.name = name
+        self.count = 0
         self.waiter = waiter
         self.fork1 = fork1
         self.fork2 = fork2
@@ -34,9 +35,10 @@ class Philosopher:
     def eat(self):
         #time.sleep(random.random()/100)
 
-        print self.name + " trying to eat"
+        print self.name + " trying to eat (" + str(self.count) + ")"
         waiter.canEat(self.fork1, self.fork2)
         print self.name + " eating"
+        self.count +=1
         #time.sleep(random.random()/100)
         waiter.release(self.fork1, self.fork2)
         print self.name + " finished eating"
@@ -46,10 +48,10 @@ waiter = Waiter("Waiter", forks)
 
 philosophers = [
     Philosopher("A", waiter, forks[0], forks[1]),
-    Philosopher("B", waiter, forks[1], forks[2]),
-    Philosopher("C", waiter, forks[2], forks[3]),
-    Philosopher("D", waiter, forks[3], forks[4]),
-    Philosopher("E", waiter, forks[4], forks[0]),
+    Philosopher("        B", waiter, forks[1], forks[2]),
+    Philosopher("                C", waiter, forks[2], forks[3]),
+    Philosopher("                          D", waiter, forks[3], forks[4]),
+    Philosopher("                                    E", waiter, forks[4], forks[0]),
 ]
 
 # Create two threads as follows
