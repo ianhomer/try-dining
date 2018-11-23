@@ -18,14 +18,13 @@ class Philosopher:
         self.fork2 = fork2
 
     def eat(self):
-        print self.name + " trying to eat"
+        print self.name + " thinking"
         self.fork1.acquire()
         self.fork2.acquire()
         print self.name + " eating"
         time.sleep(1)
         self.fork1.release()
         self.fork2.release()
-
 
 
 philosophers = [
