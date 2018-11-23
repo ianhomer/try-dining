@@ -12,9 +12,9 @@ class Philospher(val index: Int, val left: Any, val right: Any) {
     })
 }
 
-var size = 4
-var forks = arrayOf(Object(), Object(), Object(), Object())
-var philosphers = arrayOf(
+val size = 4
+val forks = listOf(Object(), Object(), Object(), Object())
+val philosphers = listOf(
             Philospher(1, forks[0], forks[1]),
             Philospher(2, forks[1], forks[2]),
             Philospher(3, forks[2], forks[3]),
@@ -30,6 +30,7 @@ var finished = false
 while (!finished) {
     Thread.sleep(1_000)
     var count = size
+    philosphers
     for (philospher in philosphers) {
         if (!philospher.eat.isAlive()) {
             count++
