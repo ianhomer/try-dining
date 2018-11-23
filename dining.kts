@@ -1,6 +1,6 @@
 class Philospher(val index: Int, val left: Any, val right: Any) {
     var count = 0
-    var eat = Thread({
+    var diner = Thread({
         while(true) {
             println("$index think : $count")
             synchronized(left) {
@@ -10,8 +10,12 @@ class Philospher(val index: Int, val left: Any, val right: Any) {
             }
         }
     })
+    fun eat() {
+        diner.start()
+    }
+
     fun isEating() : Boolean {
-        return eat.isAlive()
+        return diner.isAlive()
     }
 }
 
@@ -25,10 +29,7 @@ val philosphers = listOf(
 )
 
 println("Start ...")
-
-for (philospher in philosphers) {
-    philospher.eat.start()
-}
+philosphers.forEach({it -> it.eat()})
 println("... all eating")
 var eating = true
 while (eating) {
