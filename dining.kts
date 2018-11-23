@@ -15,13 +15,9 @@ class Philospher(val index: Int, val left: Any, val right: Any) {
 }
 
 val size = 4
-val forks = (1..4).map { Object() }
-val philosphers = listOf(
-            Philospher(1, forks[0], forks[1]),
-            Philospher(2, forks[1], forks[2]),
-            Philospher(3, forks[2], forks[3]),
-            Philospher(4, forks[3], forks[0])
-)
+val forks = (0..size).map { Object() }
+val loopedForks = forks + listOf(forks[0])
+val philosphers = (0..size).map { i -> Philospher(i, loopedForks[i], loopedForks[i+1]) }
 
 println("Start ...")
 philosphers.forEach({it -> it.eat()})
