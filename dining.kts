@@ -30,6 +30,3 @@ while (eating) {
     if (eating) println("... ${count} count still eating")
 }
 println("... end")
-
-
-
