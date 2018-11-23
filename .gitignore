@@ -4,6 +4,7 @@
 .idea/sonarlint
 
 build/
+.gradle
 
 # Maven
 
